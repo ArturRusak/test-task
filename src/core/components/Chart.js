@@ -25,13 +25,13 @@ const Chart = React.memo(({ selectedName }) => {
   return (
     <svg width="100" height="500">
       {processedData.map((item) => (
-        <>
-          <text key={`${item.name}-text`} x="0" y={item.yText} fontSize="15px" className="text">
+        <React.Fragment key={item.name}>
+          <text x="0" y={item.yText} fontSize="15px" className="text">
             {item.name}
           </text>
-          <rect key={`${item.name}-rect`} name={item.name} width="30" height={HEIGHT_SINGLE_ITEM} x="50" y={item.yChart} fill={item.color}/>
+          <rect name={item.name} width="30" height={HEIGHT_SINGLE_ITEM} x="50" y={item.yChart} fill={item.color}/>
           {selectedName && <Triangle yPos={mapElements[selectedName]}/>}
-        </>
+        </React.Fragment>
       ))}
     </svg>
   );
