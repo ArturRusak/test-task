@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const rectElement = chartUtils.createSVGElement("rect");
     const color = chartUtils.getColorByValue(dataItem.value);
     chartUtils.setAttributes(rectElement, {
-      name: dataItem.phrase,
       width: 30,
       height: HEIGHT_SINGLE_ITEM,
       x: 50,
@@ -54,8 +53,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     chartUtils.setAttributes(textElement, {
       x: 0,
       y: (index + 1) * HEIGHT_SINGLE_ITEM - 7,
-      width: 30,
-      height: HEIGHT_SINGLE_ITEM,
       class: "text",
     });
     mapElements = {...mapElements, [dataItem.phrase]: index * HEIGHT_SINGLE_ITEM};
