@@ -1,0 +1,47 @@
+html {
+  font-family: sans-serif, Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+
+#root {
+  flex: 1 0 auto;
+}
+
+header, footer {
+  padding: 1em 3em;
+  text-align: center;
+  background-color: #22cb7b;
+  color: #fff
+}
+
+.content {
+  text-align: center;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 0;
+}
+
+.input-wrapper label {
+  margin-right: 1em;
+}
+
+footer a {
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #6079c3;
+}
