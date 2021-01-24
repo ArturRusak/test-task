@@ -65,6 +65,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
   selectElement.addEventListener('input', (event) => {
     const key = Object.keys(mapElements).find((key) => key === event.target.value);
 
+    if(key && triangleSvgElement){
+      triangleSvgElement.remove();
+      triangleSvgElement = null;
+    }
+
     if(!key) {
       triangleSvgElement && triangleSvgElement.remove();
       triangleSvgElement = null;
