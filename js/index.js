@@ -1,30 +1,11 @@
-const DATA = [
-  {phrase: 'Aaa', value: 1},
-  {phrase: 'Aa1', value: 1},
-  {phrase: 'Aa2', value: 1},
-  {phrase: 'Aa3', value: 1},
-  {phrase: 'A1', value: 2},
-  {phrase: 'A2', value: 2},
-  {phrase: 'A3', value: 2},
-  {phrase: 'Baa1', value: 2},
-  {phrase: 'Baa2', value: 2},
-  {phrase: 'Baa3', value: 2},
-  {phrase: 'Ba1', value: 3},
-  {phrase: 'Ba2', value: 3},
-  {phrase: 'Ba3', value: 3},
-  {phrase: 'B1', value: 3},
-  {phrase: 'B2', value: 3},
-  {phrase: 'B3', value: 3},
-  {phrase: 'Caa1', value: 3},
-  {phrase: 'Caa2', value: 3},
-  {phrase: 'Caa3', value: 3},
-  {phrase: 'Ca', value: 3},
-  {phrase: 'C', value: 3}
-];
+// Add custom method to prototype
+SVGElement.prototype.setAttributes = function (options) {
+  Object.entries(options).forEach(([attr, value]) => {
+    this.setAttribute(attr, value);
+  });
 
-const heightChart = 500;
-
-const HEIGHT_SINGLE_ITEM = Number.parseInt(heightChart / DATA.length, 10);
+  return this;
+};
 
 document.addEventListener("DOMContentLoaded", function(event) {
   let mapElements = {};
@@ -33,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const codeContainerElement = document.getElementById("code-container");
   const svgChartElement = chartUtils.createSVGElement("svg");
 
-  chartUtils.setAttributes(svgChartElement, {
+  svgChartElement.setAttributes({
     width: 100,
     height: heightChart,
   });
@@ -43,14 +24,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const textElement = chartUtils.createSVGElement("text");
     const rectElement = chartUtils.createSVGElement("rect");
     const color = chartUtils.getColorByValue(dataItem.value);
-    chartUtils.setAttributes(rectElement, {
+
+    rectElement.setAttributes({
       width: 30,
       height: HEIGHT_SINGLE_ITEM,
       x: 50,
       y: index * HEIGHT_SINGLE_ITEM ,
       fill: color
     });
-    chartUtils.setAttributes(textElement, {
+    textElement.setAttributes({
       x: 0,
       y: (index + 1) * HEIGHT_SINGLE_ITEM - 7,
       class: "text",
@@ -77,15 +59,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     triangleSvgElement = chartUtils.createSVGElement('svg');
-    chartUtils.setAttributes(triangleSvgElement, {
+    triangleSvgElement.setAttributes({
       width: 20,
       height: 20,
       x: 80,
       y: mapElements[key],
       class: "svg-triangle",
     });
+
     const triangleElement = chartUtils.createSVGElement('path');
-    chartUtils.setAttributes(triangleElement, {
+    triangleElement.setAttributes({
       d: "M 0 10 L 20 0 L 20 20 Z",
       fill: "blue"
     });
